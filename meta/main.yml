@@ -11,4 +11,4 @@ galaxy_info:
   galaxy_tags: []
 
 dependencies:
-- role: versioncontrol-utils
+- role: openmicroscopy.versioncontrol-utils
