@@ -1,6 +1,8 @@
 Jekyll site
 ===========
 
+[![Build Status](https://travis-ci.org/openmicroscopy/ansible-role-jekyll-build.svg)](https://travis-ci.org/openmicroscopy/ansible-role-jekyll-build)
+
 Install Jekyll and setup a site.
 
 
