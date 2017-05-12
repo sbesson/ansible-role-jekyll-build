@@ -66,6 +66,7 @@
   command: bundle install
   args:
     chdir: "{{jekyll_build_sourcedir}}"
+    removes: "{{jekyll_build_sourcedir}}/Gemfile"
   when: (jekyll_build_clone | changed)
 
 - name: jekyll | build jekyll website
