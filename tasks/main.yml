@@ -78,4 +78,4 @@
          ternary('--baseurl ' + jekyll_build_baseurl, '') }}
   args:
     chdir: "{{ jekyll_build_sourcedir }}"
-  when: "{{ (jekyll_build_clone | changed) or jekyll_build_force_rebuild }}"
+  when: (jekyll_build_clone | changed) or jekyll_build_force_rebuild
