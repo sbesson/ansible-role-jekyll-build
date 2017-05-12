@@ -11,11 +11,20 @@
     - ruby-devel
     - make
     - gcc
+    - libxml2-devel
+    - libxslt-devel
 
 - name: jekyll | install bundler
   become: yes
   gem:
     name: bundler
+    state: present
+    user_install: no
+
+- name: jekyll | install pkg-config
+  become: yes
+  gem:
+    name: pkg-config
     state: present
     user_install: no
 
@@ -48,6 +57,16 @@
     dest: "{{ jekyll_build_sourcedir }}"
     force: "{{ jekyll_build_force_git }}"
   register: jekyll_build_clone
+
+- name: jekyll | update bundle
+  become: yes
+  become_user: "{{ jekyll_build_owner }}"
+  environment:
+    NOKOGIRI_USE_SYSTEM_LIBRARIES: 1
+  command: bundle install
+  args:
+    chdir: "{{jekyll_build_sourcedir}}"
+  when: (jekyll_build_clone | changed)
 
 - name: jekyll | build jekyll website
   become: yes
