@@ -63,4 +63,4 @@
 -  debug:
      msg: "Force jekyll rebuild: {{ jekyll_build_force_rebuild }}"
    notify: jekyll build
-   changed_when: "{{ jekyll_build_force_rebuild }}"
+   changed_when: jekyll_build_force_rebuild
