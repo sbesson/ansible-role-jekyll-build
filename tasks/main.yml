@@ -11,11 +11,20 @@
     - ruby-devel
     - make
     - gcc
+    - libxml2-devel
+    - libxslt-devel
 
 - name: jekyll | install bundler
   become: yes
   gem:
     name: bundler
+    state: present
+    user_install: no
+
+- name: jekyll | install pkg-config
+  become: yes
+  gem:
+    name: pkg-config
     state: present
     user_install: no
 
@@ -47,16 +56,11 @@
     version: "{{ jekyll_build_git_branch | default(omit) }}"
     dest: "{{ jekyll_build_sourcedir }}"
     force: "{{ jekyll_build_force_git }}"
-  register: jekyll_build_clone
+  notify:
+   - update bundle
+   - jekyll build
 
-- name: jekyll | build jekyll website
-  become: yes
-  become_user: "{{ jekyll_build_owner }}"
-  command: >
-      /usr/local/bin/jekyll build
-      --destination {{ jekyll_build_root }}
-      {{ (jekyll_build_baseurl | length > 0) |
-         ternary('--baseurl ' + jekyll_build_baseurl, '') }}
-  args:
-    chdir: "{{ jekyll_build_sourcedir }}"
-  when: "{{ (jekyll_build_clone | changed) or jekyll_build_force_rebuild }}"
+-  debug:
+     msg: "Force jekyll rebuild: {{ jekyll_build_force_rebuild }}"
+   notify: jekyll build
+   changed_when: jekyll_build_force_rebuild
