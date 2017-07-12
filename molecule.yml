@@ -21,9 +21,19 @@ vagrant:
 
 docker:
   containers:
-  - name: jekyll-build
+  - name: jekyll-build-default
     image: centos
     image_version: 7
+
+  - name: jekyll-build-dual-config
+    image: centos
+    image_version: 7
+
+ansible:
+  host_vars:
+    jekyll-build-dual-config:
+      jekyll_build_config: "_config.yml,_prod.yml"
+
 
 verifier:
   name: testinfra

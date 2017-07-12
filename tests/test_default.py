@@ -6,9 +6,3 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 def test_package(Package):
     assert Package("rubygems").is_installed
-
-
-def test_index(File):
-    f = File("/var/www/localhost/html/index.html")
-    assert f.exists
-    assert f.is_file
