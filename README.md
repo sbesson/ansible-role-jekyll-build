@@ -32,6 +32,7 @@ Optional variables:
 - `jekyll_build_git_branch`: Git branch
 - `jekyll_build_force_git`: Remove modified files in the git repository, default `False`
 - `jekyll_build_baseurl`: Prefix for the Jekyll site
+- `jekyll_build_config`: A list of configuration files to use for building
 
 Deprecated variables:
 
