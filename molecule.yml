@@ -32,7 +32,7 @@ docker:
 ansible:
   host_vars:
     jekyll-build-dual-config:
-      jekyll_build_config: "_config.yml,_prod.yml"
+      jekyll_build_config: ["_config.yml", "_prod.yml"]
 
 
 verifier:
