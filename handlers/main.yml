@@ -22,6 +22,6 @@
       {{ (jekyll_build_baseurl | length > 0) |
          ternary('--baseurl ' + jekyll_build_baseurl, '') }}
       {{ (jekyll_build_config | length > 0) |
-         ternary('--config ' + jekyll_build_config, '') }}
+         ternary('--config ' + jekyll_build_config | join(","), '') }}
   args:
     chdir: "{{ jekyll_build_sourcedir }}"
