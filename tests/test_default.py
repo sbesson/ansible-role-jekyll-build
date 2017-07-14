@@ -10,7 +10,8 @@ def test_package(Package):
     assert Package("rubygems").is_installed
 
 
-def test_prefix(File):
+def test_prefix(File, TestinfraBackend):
+    host = TestinfraBackend.get_hostname()
     f = File(FILEPATH)
     assert f.exists
     if host == 'jekyll-build-dual-config':
