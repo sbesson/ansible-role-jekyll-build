@@ -17,7 +17,8 @@ vagrant:
         memory: 512
         cpus: 1
   instances:
-    - name: jekyll-build
+    - name: jekyll-build-default
+    - name: jekyll-build-dual-config
 
 docker:
   containers:
