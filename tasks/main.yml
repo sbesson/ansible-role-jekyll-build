@@ -51,6 +51,7 @@
   become: yes
   bundler:
     chdir: /opt/jekyll-build
+    executable: /usr/local/bin/bundler
     state: present
 
 - name: jekyll | create site root directory
