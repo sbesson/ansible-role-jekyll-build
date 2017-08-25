@@ -28,18 +28,6 @@
     state: present
     user_install: no
 
-- name: jekyll | install jekyll
-  become: yes
-  gem:
-    name: jekyll
-    # 3.5.0 breaks this role
-    # 3.4.4 causes a version conflict with another package (2017-06-20)
-    # TODO: see if the conflicting package has been fixed
-    version: 3.4.3
-    state: present
-    user_install: no
-    include_doc: no
-
 - name: jekyll | create site root directory
   become: yes
   file:
