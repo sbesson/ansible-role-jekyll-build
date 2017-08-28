@@ -20,6 +20,9 @@
     name: bundler
     state: present
     user_install: no
+    # bundler adds the version to Gemfile.lock, so to avoid an idempotence
+    # error the versions must match
+    version: 1.15.4
 
 - name: jekyll | install pkg-config
   become: yes
@@ -28,17 +31,28 @@
     state: present
     user_install: no
 
+- name: jekyll | create jekyll install directory
+  become: yes
+  file:
+    path: /opt/jekyll-build/
+    state: directory
+
+- name: jekyll | copy gemfiles
+  become: yes
+  copy:
+    dest: /opt/jekyll-build/{{ item }}
+    force: yes
+    src: "{{ item }}"
+  with_items:
+  - Gemfile
+  - Gemfile.lock
+
 - name: jekyll | install jekyll
   become: yes
-  gem:
-    name: jekyll
-    # 3.5.0 breaks this role
-    # 3.4.4 causes a version conflict with another package (2017-06-20)
-    # TODO: see if the conflicting package has been fixed
-    version: 3.4.3
+  bundler:
+    chdir: /opt/jekyll-build
+    executable: /usr/local/bin/bundler
     state: present
-    user_install: no
-    include_doc: no
 
 - name: jekyll | create site root directory
   become: yes
