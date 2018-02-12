@@ -7,29 +7,16 @@
     name: "{{ item }}"
     state: present
   with_items:
-    - rubygems
-    - ruby-devel
     - make
     - gcc
     - libxml2-devel
     - libxslt-devel
-
-- name: jekyll | install bundler
-  become: yes
-  gem:
-    name: bundler
-    state: present
-    user_install: no
-    # bundler adds the version to Gemfile.lock, so to avoid an idempotence
-    # error the versions must match
-    version: 1.15.4
 
 - name: jekyll | install pkg-config
   become: yes
   gem:
     name: pkg-config
     state: present
-    user_install: no
 
 - name: jekyll | create jekyll install directory
   become: yes
