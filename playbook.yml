@@ -8,7 +8,7 @@
     become: yes
     package:
       name: "{{item}}"
-      state: latest
+      state: present
     with_items:
       - which
     when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'

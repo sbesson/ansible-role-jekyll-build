@@ -17,7 +17,7 @@
   become: yes
   become_user: "{{ jekyll_build_owner }}"
   command: >
-      /usr/local/bin/jekyll build
+      /usr/local/bin/bundle exec jekyll build
       --destination {{ jekyll_build_root }}
       {{ (jekyll_build_baseurl | length > 0) |
          ternary('--baseurl ' + jekyll_build_baseurl, '') }}

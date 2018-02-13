@@ -12,12 +12,6 @@
     - libxml2-devel
     - libxslt-devel
 
-- name: jekyll | install pkg-config
-  become: yes
-  gem:
-    name: pkg-config
-    state: present
-
 - name: jekyll | create jekyll install directory
   become: yes
   file:

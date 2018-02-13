@@ -5,7 +5,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_package(Package):
-    assert Package("rubygems").is_installed
+    assert Package("which").is_installed
 
 
 def test_index(File):
