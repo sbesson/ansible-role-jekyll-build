@@ -18,8 +18,6 @@
   include_role:
     name: rvm_io.ruby
   vars:
-    rvm1_bundler_install: True
-    rvm1_install_flags: '--auto-dotfiles'
     rvm1_install_path: "{{ jekyll_build_rvm1_install_path }}"
     rvm1_user: root
 
