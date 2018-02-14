@@ -1,6 +1,8 @@
 ---
 # defaults file for roles/jekyll-build
 
+jekyll_build_rvm1_install_path: ~/.rvm
+
 jekyll_build_owner: root
 jekyll_build_group: root
 jekyll_build_name: localhost
