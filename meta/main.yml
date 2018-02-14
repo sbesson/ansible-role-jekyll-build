@@ -11,12 +11,4 @@ galaxy_info:
   galaxy_tags: []
 
 dependencies:
-- role: rvm_io.ruby
-  become: yes
-  vars:
-    - rvm1_user: root
-    - rvm1_bundler_install: True
-    - rvm1_install_path: /usr/local/rvm
-    - rvm1_symlink_to: /usr/local/bin
-    - rvm1_install_flags: --auto-dotfiles
 - role: openmicroscopy.versioncontrol-utils

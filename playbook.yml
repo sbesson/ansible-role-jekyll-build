@@ -2,17 +2,6 @@
 - hosts: all
   vars:
     jekyll_build_git_repo: "https://github.com/openmicroscopy/www.openmicroscopy.org"
-  pre_tasks:
-
-  - name: install which
-    become: yes
-    package:
-      name: "{{item}}"
-      state: present
-    with_items:
-      - which
-    when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
-
 
   roles:
    - role: ansible-role-jekyll-build

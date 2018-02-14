@@ -11,6 +11,18 @@
     - gcc
     - libxml2-devel
     - libxslt-devel
+    - which
+
+- name: install ruby
+  become: yes
+  include_role:
+    name: rvm_io.ruby
+  vars:
+    rvm1_bundler_install: True
+    rvm1_install_flags: '--auto-dotfiles'
+    rvm1_install_path: /usr/local/rvm
+    rvm1_user: root
+    rvm1_symlink_to: /usr/local/bin
 
 - name: jekyll | create jekyll install directory
   become: yes
