@@ -20,9 +20,8 @@
   vars:
     rvm1_bundler_install: True
     rvm1_install_flags: '--auto-dotfiles'
-    rvm1_install_path: /usr/local/rvm
+    rvm1_install_path: "{{ jekyll_build_rvm1_install_path }}"
     rvm1_user: root
-    rvm1_symlink_to: /usr/local/bin
 
 - name: jekyll | create jekyll install directory
   become: yes
@@ -44,7 +43,7 @@
   become: yes
   bundler:
     chdir: /opt/jekyll-build
-    executable: /usr/local/bin/bundler
+    executable: "{{ jekyll_build_rvm1_install_path }}/wrappers/default/bundler"
     state: present
 
 - name: jekyll | create site root directory

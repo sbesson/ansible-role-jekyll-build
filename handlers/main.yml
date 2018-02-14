@@ -6,8 +6,6 @@
   become_user: "{{ jekyll_build_owner }}"
   environment:
     NOKOGIRI_USE_SYSTEM_LIBRARIES: 1
-    # Ensure that bundle is on the PATH
-    PATH: /usr/local/bin:{{ ansible_env.PATH }}
   command: bundle install
   args:
     chdir: "{{jekyll_build_sourcedir}}"
@@ -17,7 +15,7 @@
   become: yes
   become_user: "{{ jekyll_build_owner }}"
   command: >
-      /usr/local/bin/bundle exec jekyll build
+      {{ jekyll_build_rvm1_install_path }}/wrappers/default/bundle exec jekyll build
       --destination {{ jekyll_build_root }}
       {{ (jekyll_build_baseurl | length > 0) |
          ternary('--baseurl ' + jekyll_build_baseurl, '') }}
