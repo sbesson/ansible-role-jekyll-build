@@ -61,7 +61,7 @@
   become_user: "{{ jekyll_build_owner }}"
   git:
     repo: "{{ jekyll_build_git_repo }}"
-    version: "{{ jekyll_build_git_branch | default(omit) }}"
+    version: "{{ jekyll_build_git_branch }}"
     dest: "{{ jekyll_build_sourcedir }}"
     force: "{{ jekyll_build_force_git }}"
   notify:
