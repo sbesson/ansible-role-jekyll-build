@@ -10,7 +10,8 @@ Install Jekyll and setup a site.
 Dependencies
 ------------
 
-This role requires `git` and therefore includes `versioncontrol-utils` as a dependency.
+This role requires `git` and therefore includes
+`openmicroscopy.versioncontrol-utils` as a dependency.
 
 
 Role Variables
@@ -29,7 +30,7 @@ Optional variables:
 
 - `jekyll_build_root`: The destination directory for the Jekyll output
 - `jekyll_build_owner`, `jekyll_build_group`: The system owner and group of `jekyll_build_sourcedir` and `jekyll_build_root`, default `root:root`
-- `jekyll_build_git_branch`: Git branch
+- `jekyll_build_git_branch`: The name of the git branch to clone, default `master`
 - `jekyll_build_force_git`: Remove modified files in the git repository, default `False`
 - `jekyll_build_baseurl`: Prefix for the Jekyll site
 - `jekyll_build_config`: A list of configuration files to use for building
