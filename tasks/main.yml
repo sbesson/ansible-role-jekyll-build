@@ -40,7 +40,7 @@
 - name: jekyll | update rubygems
   become: yes
   shell: >
-    {{ jekyll_build_rvm1_install_path }}/bin/gem update --system
+    {{ jekyll_build_rvm1_install_path }}/bin/rvm rubygems 2.7.7
 
 - name: jekyll | install jekyll
   become: yes
