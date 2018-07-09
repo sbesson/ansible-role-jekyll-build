@@ -37,6 +37,11 @@
   - Gemfile
   - Gemfile.lock
 
+- name: jekyll | update rubygems
+  become: yes
+  shell: >
+    {{ jekyll_build_rvm1_install_path }}/bin/rvm rubygems latest
+
 - name: jekyll | install jekyll
   become: yes
   bundler:
